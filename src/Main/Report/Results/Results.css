@@ -1,8 +1,52 @@
+/* Source: https://medium.com/@simonlidesign/an-elegant-way-to-break-the-bootstrap-container-2912628e4829 */
+.break-out {
+  width: 100vw;
+  position: relative;
+  left: calc(-1 * (100vw - 100%) / 2);
+}
+
+.statistics-container {
+  background: url(https://bnetcmsus-a.akamaihd.net/cms/template_resource/M2OCS5UIKDR61458162658631.jpg);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px 0;
+}
+.statistics-container:before {
+  content: '';
+  top: -52px;
+  background-image: url(https://worldofwarcraft.akamaized.net/static/components/Divider/Divider-ocho-thin.png);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 115px;
+  z-index: 1;
+}
+.statistics-container:after {
+  content: '';
+  bottom: -52px;
+  background-image: url(https://worldofwarcraft.akamaized.net/static/components/Divider/Divider-ocho-thickUp.png);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 115px;
+  z-index: 1;
+}
 .statistics {
-  margin-left: -10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .statistics > div {
-  padding: 0 10px;
+  flex: 1 1 auto;
+  width: auto;
+  margin: 30px;
 }
 .results .navigation {
   border-bottom: 4px solid #d84141;

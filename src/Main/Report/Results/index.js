@@ -103,15 +103,23 @@ class Results extends React.PureComponent {
 
   renderStatistics(statistics) {
     return (
-      <Masonry className="row statistics">
-        {statistics
-          .filter(statistic => !!statistic) // filter optionals
-          .map((statistic, index) => statistic.statistic ? statistic : { statistic, order: index }) // normalize
-          .sort((a, b) => a.order - b.order)
-          .map((statistic, i) => React.cloneElement(statistic.statistic, {
-            key: `${statistic.order}-${i}`,
-          }))}
-      </Masonry>
+      <div className="break-out statistics-container">
+        <div className="container">
+          <div className="text-center">
+            <h1 style={{ textTransform: 'uppercase', fontSize: '4em' }}>Statistics</h1>
+          </div>
+
+          <div className="statistics">
+            {statistics
+              .filter(statistic => !!statistic) // filter optionals
+              .map((statistic, index) => statistic.statistic ? statistic : { statistic, order: index }) // normalize
+              .sort((a, b) => a.order - b.order)
+              .map((statistic, i) => React.cloneElement(statistic.statistic, {
+                key: `${statistic.order}-${i}`,
+              }))}
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -282,11 +290,7 @@ class Results extends React.PureComponent {
 
         <div className="divider" />
 
-        <div className="row">
-          <div className="col-md-12">
-            {this.renderStatistics(results.statistics)}
-          </div>
-        </div>
+        {this.renderStatistics(results.statistics)}
 
         <div className="divider" />
 

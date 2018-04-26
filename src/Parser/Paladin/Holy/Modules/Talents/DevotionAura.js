@@ -101,7 +101,7 @@ class DevotionAura extends Analyzer {
       />
     );
   }
-  statisticOrder = STATISTIC_ORDER.OPTIONAL(60);
+  statisticOrder = STATISTIC_ORDER.CORE(60);
 }
 
 export default DevotionAura;

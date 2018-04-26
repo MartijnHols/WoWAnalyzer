@@ -8,7 +8,7 @@ import Analyzer from 'Parser/Core/Analyzer';
 import calculateEffectiveHealing from 'Parser/Core/calculateEffectiveHealing';
 import Combatants from 'Parser/Core/Modules/Combatants';
 
-import SmallStatisticBox, { STATISTIC_ORDER } from 'Main/SmallStatisticBox';
+import StatisticBox, { STATISTIC_ORDER } from 'Main/StatisticBox';
 
 import TyrsMunificence from '../Traits/TyrsMunificence';
 
@@ -79,7 +79,7 @@ class TyrsDeliverance extends Analyzer {
     const tyrsDeliverancePercentage = tyrsDeliveranceHealHealingPercentage + tyrsDeliveranceBuffFoLHLHealingPercentage;
 
     return (
-      <SmallStatisticBox
+      <StatisticBox
         icon={<SpellIcon id={SPELLS.TYRS_DELIVERANCE_CAST.id} />}
         value={`${formatPercentage(tyrsDeliverancePercentage)} %`}
         label="Tyr's Deliverance healing"

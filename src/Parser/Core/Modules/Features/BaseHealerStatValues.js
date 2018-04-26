@@ -399,7 +399,7 @@ class BaseHealerStatValues extends Analyzer {
     }
   }
   moreInformationLink = null;
-  statisticOrder = STATISTIC_ORDER.CORE(11);
+  statisticOrder = STATISTIC_ORDER.CORE(200);
   statistic() {
     const results = this._prepareResults();
     return (

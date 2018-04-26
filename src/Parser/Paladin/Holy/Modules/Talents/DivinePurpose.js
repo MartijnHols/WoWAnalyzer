@@ -82,7 +82,7 @@ class DivinePurpose extends Analyzer {
       />
     );
   }
-  statisticOrder = STATISTIC_ORDER.OPTIONAL(75);
+  statisticOrder = STATISTIC_ORDER.CORE(75);
 }
 
 export default DivinePurpose;

@@ -5,13 +5,26 @@ import './StatisticBox.css';
 
 export { default as STATISTIC_ORDER } from './STATISTIC_ORDER';
 
-const StatisticBox = ({ icon, value, tooltip, label, footer, footerStyle, containerProps, alignIcon, ...others }) => (
-  <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" {...containerProps}>
-    <div className="panel statistic-box" {...others}>
-      <div className="panel-body flex">
-        <div className="flex-sub" style={{ display: 'flex', alignItems: alignIcon }}>
+const StatisticBox = ({ icon, value, tooltip, label, footer, footerStyle, ...others }) => (
+  <div className="panel statistic-box" {...others}>
+    <div className="panel-body flex">
+      <div className="flex-sub">
+        <figure>
           {icon}
+        </figure>
+      </div>
+      {footer ? (
+        <div className="flex-main">
+          <div className="value">
+            <div style={{ margin: '8px 0', borderRadius: 5, padding: 0, borderTop: 0, ...footerStyle }}>
+              {footer}
+            </div>
+          </div>
+          <div className="slabel">
+            {value} {tooltip ? <dfn data-tip={tooltip}>{label}</dfn> : label}
+          </div>
         </div>
+      ) : (
         <div className="flex-main">
           <div className="value">
             {value}
@@ -19,11 +32,6 @@ const StatisticBox = ({ icon, value, tooltip, label, footer, footerStyle, contai
           <div className="slabel">
             {tooltip ? <dfn data-tip={tooltip}>{label}</dfn> : label}
           </div>
-        </div>
-      </div>
-      {footer && (
-        <div className="panel-footer" style={{ padding: 0, borderTop: 0, ...footerStyle }}>
-          {footer}
         </div>
       )}
     </div>
@@ -36,12 +44,7 @@ StatisticBox.propTypes = {
   label: PropTypes.node.isRequired,
   footer: PropTypes.node,
   footerStyle: PropTypes.object,
-  containerProps: PropTypes.object,
   alignIcon: PropTypes.string,
-};
-
-StatisticBox.defaultProps = {
-  alignIcon: 'center',
 };
 
 export default StatisticBox;

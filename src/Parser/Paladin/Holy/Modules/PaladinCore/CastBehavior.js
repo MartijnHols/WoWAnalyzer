@@ -195,27 +195,23 @@ class CastBehavior extends Analyzer {
 
   statistic() {
     return (
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <div className="row">
-          <StatisticsListBox
-            title={<span><SpellLink id={SPELLS.INFUSION_OF_LIGHT.id}>Infusion of Light</SpellLink> usage</span>}
-            containerProps={{ className: 'col-xs-12' }}
-          >
-            {this.iolCastRatioChart()}
-          </StatisticsListBox>
-        </div>
-        <div className="row">
-          <StatisticsListBox
-            title="Fillers"
-            containerProps={{ className: 'col-xs-12' }}
-          >
-            {this.fillerCastRatioChart()}
-          </StatisticsListBox>
-        </div>
-      </div>
+      <React.Fragment>
+        <StatisticsListBox
+          title={<span><SpellLink id={SPELLS.INFUSION_OF_LIGHT.id}>Infusion of Light</SpellLink> usage</span>}
+          containerProps={{ className: 'col-xs-12' }}
+        >
+          {this.iolCastRatioChart()}
+        </StatisticsListBox>
+        <StatisticsListBox
+          title="Fillers"
+          containerProps={{ className: 'col-xs-12' }}
+        >
+          {this.fillerCastRatioChart()}
+        </StatisticsListBox>
+      </React.Fragment>
     );
   }
-  statisticOrder = STATISTIC_ORDER.CORE(40);
+  statisticOrder = STATISTIC_ORDER.CORE(199);
 }
 
 export default CastBehavior;
