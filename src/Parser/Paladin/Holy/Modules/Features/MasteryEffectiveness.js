@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SPELLS from 'common/SPELLS';
+import SpellLink from 'common/SpellLink';
 import { formatPercentage } from 'common/format';
 import Analyzer from 'Parser/Core/Analyzer';
 import Combatants from 'Parser/Core/Modules/Combatants';
@@ -11,6 +12,7 @@ import PlayerBreakdownTab from 'Main/PlayerBreakdownTab';
 
 import BeaconTargets from '../PaladinCore/BeaconTargets';
 import { ABILITIES_AFFECTED_BY_MASTERY, BEACON_TYPES } from '../../Constants';
+import RuleOfLaw from '../Talents/RuleOfLaw';
 
 const debug = false;
 
@@ -19,6 +21,7 @@ class MasteryEffectiveness extends Analyzer {
     combatants: Combatants,
     beaconTargets: BeaconTargets,
     statTracker: StatTracker,
+    ruleOfLaw: RuleOfLaw,
   };
 
   lastPlayerPositionUpdate = null;
@@ -250,6 +253,11 @@ class MasteryEffectiveness extends Analyzer {
         icon={<img src={MasteryRadiusImage} style={{ border: 0 }} alt="Mastery effectiveness" />}
         value={`${formatPercentage(this.overallMasteryEffectiveness)} %`}
         label="Mastery effectiveness"
+        subStat={this.ruleOfLaw.active ? (
+          <React.Fragment>
+            <SpellLink id={SPELLS.RULE_OF_LAW_TALENT.id} />: {formatPercentage(this.ruleOfLaw.uptime)} % uptime
+          </React.Fragment>
+        ) : undefined}
       />
     );
   }

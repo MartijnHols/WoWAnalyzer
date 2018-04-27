@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
-import Masonry from 'react-masonry-component';
 
 import ChecklistIcon from 'Icons/Checklist';
 import SuggestionIcon from 'Icons/Suggestion';
@@ -106,7 +105,7 @@ class Results extends React.PureComponent {
       <div className="break-out statistics-container">
         <div className="container">
           <div className="text-center">
-            <h1 style={{ textTransform: 'uppercase', fontSize: '4em' }}>Statistics</h1>
+            <h1 style={{ textTransform: 'uppercase', fontSize: '4em' }}>Metrics</h1>
           </div>
 
           <div className="statistics">

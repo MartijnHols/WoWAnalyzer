@@ -79,6 +79,7 @@ class SacredDawn extends Analyzer {
         icon={<SpellIcon id={SPELLS.SACRED_DAWN.id} />}
         label="Sacred Dawn contribution"
         value={`${formatPercentage(this.owner.getPercentageOfTotalHealingDone(this.healing))} %`}
+        small
       />
     );
   }

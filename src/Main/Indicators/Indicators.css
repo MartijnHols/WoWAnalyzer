@@ -1,0 +1,108 @@
+/* Indicator details */
+.indicator {
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+.indicator .value {
+  font-size: 1.9em;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.indicator .sub-label, .indicator .sub-stat {
+  font-size: 1.1em;
+}
+.indicator .sub-label {
+  margin-top: -0.15em;
+  color: #a2a2a2;
+  line-height: 1.4;
+}
+.indicator .sub-stat {
+  color: #a2a2a2;
+}
+.indicator > div:nth-child(1) figure {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.4em;
+}
+.indicator > div:nth-child(1) figure:before {
+  content: '';
+  position: absolute;
+  top: -1em;
+  left: -1em;
+  right: -1em;
+  bottom: -1.4em;
+  background: url(/img/statistic-icon-border.png);
+  background-size: contain;
+  pointer-events: none;
+}
+.indicator > div:nth-child(1) figure img {
+  margin-top: 0;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  height: 6em;
+}
+
+/* Different indicator styles */
+.indicator.-horizontal {
+  display: flex;
+  flex-direction: row;
+  min-width: 20em;
+}
+.indicator.-horizontal > div {
+  flex: 1 1 auto;
+}
+.indicator.-horizontal > div:nth-child(1) { /* icon container */
+  width: 7.1em;
+  margin-right: 1.5em;
+  text-align: center;
+}
+.indicator.-horizontal > div:nth-child(2) {
+  width: 100%;
+}
+
+.indicator.-vertical {
+  text-align: center;
+}
+
+.indicator.-medium {
+  font-size: 0.8em;
+}
+/* While resizing everything by setting the parent font size works for most things, the texts become just a bit too small. */
+.indicator.-medium .value {
+  font-size: 2.1em;
+}
+.indicator.-medium .sub-label, .indicator.-medium .sub-stat {
+  font-size: 1.2em;
+}
+.indicator.-small {
+  font-size: 0.6em;
+}
+/* While resizing everything by setting the parent font size works for most things, the texts become just a bit too small. */
+.indicator.-small .value {
+  font-size: 2.3em;
+}
+.indicator.-small .sub-label, .indicator.-small .sub-stat {
+  font-size: 1.5em;
+}
+
+/* statistic-bar */
+.indicator .statistic-bar {
+  display: flex;
+  position: relative;
+}
+.indicator .statistic-bar > div {
+  flex: 0 0 auto;
+  height: 22px;
+  padding: 4px 3px 3px;
+  text-align: center;
+}
+.indicator .statistic-bar > div.remainder {
+  flex: 1;
+}
+.indicator .statistic-bar > div img {
+  height: 16px;
+  border: 0;
+  border-radius: 0;
+  vertical-align: top;
+}

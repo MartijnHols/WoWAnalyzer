@@ -5,23 +5,9 @@
 .panel.statistic-box > .panel-body:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-.panel.statistic-box > .panel-body > .flex-main {
-  padding-left: 16px;
-}
-.panel.statistic-box .value {
-  font-size: 1.9em;
-  font-weight: 600;
-  line-height: 1.5;
-}
-.panel.statistic-box .slabel {
-  margin-top: -0.3em;
-  color: #bbb;
-}
-.panel.statistic-box img {
-  height: 4.3em;
-  margin-top: 0;
-  border-radius: 3px;
-  border: 1px solid rgba(0, 0, 0, 0.6);
+
+.statistic-list {
+  min-width: 250px;
 }
 .panel.statistic-box.statistic-list .panel-heading {
   text-align: center;
@@ -38,64 +24,4 @@
   margin-bottom: 0.3em;
   padding-bottom: 0.2em;
   border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-.panel.statistic-box .statistic-bar {
-  display: flex;
-  position: relative;
-}
-.panel.statistic-box .statistic-bar > div {
-  flex: 0 0 auto;
-  height: 22px;
-  padding: 4px 3px 3px;
-  text-align: center;
-}
-.panel.statistic-box .statistic-bar > div.remainder {
-  flex: 1;
-}
-.panel.statistic-box .statistic-bar > div img {
-  height: 16px;
-  border: 0;
-  border-radius: 0;
-  vertical-align: top;
-}
-
-/* small */
-.panel.statistic-box.small img {
-  height: 1.6em;
-  margin-top: -0.2em;
-}
-.statistic-box.small > .panel-body > .flex-main {
-  padding-left: 0;
-}
-
-/* square */
-.panel.statistic-box:not(.statistic-list) {
-  background: none;
-  border: 0;
-  box-shadow: none;
-  min-width: 190px;
-}
-.panel.statistic-box img {
-  border-radius: 50%;
-  height: 6em;
-}
-.panel.statistic-box > .flex {
-  flex-direction: column;
-  text-align: center;
-}
-.panel.statistic-box figure {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 20px;
-}
-.panel.statistic-box figure:before {
-  content: '';
-  position: absolute;
-  top: -15px;
-  left: -16px;
-  right: -16px;
-  bottom: -21px;
-  background: url(/img/statistic-icon-border.png);
-  background-size: contain;
-  pointer-events: none;
 }

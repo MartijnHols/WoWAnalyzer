@@ -84,6 +84,7 @@ class TyrsDeliverance extends Analyzer {
         value={`${formatPercentage(tyrsDeliverancePercentage)} %`}
         label="Tyr's Deliverance healing"
         tooltip={`The total actual effective healing contributed by Tyr's Deliverance. This includes the gains from the increase to healing by Flash of Light and Holy Light.<br /><br />The actual healing done by the effect was ${formatPercentage(tyrsDeliveranceHealHealingPercentage)}% of your healing done, and the healing contribution from the Flash of Light and Holy Light heal increase was ${formatPercentage(tyrsDeliveranceBuffFoLHLHealingPercentage)}% of your healing done.`}
+        small
       />
     );
   }

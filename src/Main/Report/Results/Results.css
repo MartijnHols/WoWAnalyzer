@@ -44,9 +44,9 @@
   flex-wrap: wrap;
 }
 .statistics > div {
-  flex: 1 1 auto;
+  flex: 1 1 0;
   width: auto;
-  margin: 30px;
+  margin: 30px 15px;
 }
 .results .navigation {
   border-bottom: 4px solid #d84141;

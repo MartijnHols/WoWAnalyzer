@@ -79,6 +79,7 @@ class DivinePurpose extends Analyzer {
         )}
         label="Divine Purpose procs"
         tooltip={`Your Divine Purpose proc rate for Holy Shock was ${formatPercentage(this.holyShockProcs / (holyShockHeals - this.holyShockProcs))}%.<br />Your Divine Purpose proc rate for Light of Dawn was ${formatPercentage(this.lightOfDawnProcs / (lightOfDawnHeals - this.lightOfDawnProcs))}%`}
+        medium
       />
     );
   }

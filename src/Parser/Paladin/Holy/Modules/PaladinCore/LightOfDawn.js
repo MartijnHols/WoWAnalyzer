@@ -43,7 +43,7 @@ class LightOfDawn extends Analyzer {
       />
     );
   }
-  statisticOrder = STATISTIC_ORDER.CORE(60);
+  statisticOrder = STATISTIC_ORDER.CORE(31);
 }
 
 export default LightOfDawn;

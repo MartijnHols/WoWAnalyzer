@@ -1,14 +1,11 @@
 import React from 'react';
 
 import SPELLS from 'common/SPELLS';
-import SpellIcon from 'common/SpellIcon';
 import SpellLink from 'common/SpellLink';
 import { formatPercentage } from 'common/format';
 
 import Analyzer from 'Parser/Core/Analyzer';
 import Combatants from 'Parser/Core/Modules/Combatants';
-
-import StatisticBox, { STATISTIC_ORDER } from 'Main/StatisticBox';
 
 class RuleOfLaw extends Analyzer {
   static dependencies = {
@@ -46,16 +43,6 @@ class RuleOfLaw extends Analyzer {
         .recommended(`>${formatPercentage(recommended)}% is recommended`);
     });
   }
-  statistic() {
-    return (
-      <StatisticBox
-        icon={<SpellIcon id={SPELLS.RULE_OF_LAW_TALENT.id} />}
-        value={`${formatPercentage(this.uptime)} %`}
-        label="Rule of Law uptime"
-      />
-    );
-  }
-  statisticOrder = STATISTIC_ORDER.CORE(31);
 }
 
 export default RuleOfLaw;
