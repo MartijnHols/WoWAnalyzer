@@ -7,7 +7,6 @@ import { formatPercentage } from 'common/format';
 
 import Analyzer from 'Parser/Core/Analyzer';
 import Combatants from 'Parser/Core/Modules/Combatants';
-import ManaValues from 'Parser/Core/Modules/ManaValues';
 
 import StatisticsListBox, { STATISTIC_ORDER } from 'Main/StatisticsListBox';
 
@@ -15,11 +14,10 @@ import PaladinAbilityTracker from './PaladinAbilityTracker';
 
 const CHART_SIZE = 75;
 
-class CastBehavior extends Analyzer {
+class InfusionOfLightCastRatio extends Analyzer {
   static dependencies = {
     combatants: Combatants,
     abilityTracker: PaladinAbilityTracker,
-    manaValues: ManaValues,
   };
 
   get iolProcsPerHolyShockCrit() {
@@ -150,68 +148,16 @@ class CastBehavior extends Analyzer {
     );
   }
 
-  fillerCastRatioChart() {
-    const abilityTracker = this.abilityTracker;
-    const getAbility = spellId => abilityTracker.getAbility(spellId);
-
-    const flashOfLight = getAbility(SPELLS.FLASH_OF_LIGHT.id);
-    const holyLight = getAbility(SPELLS.HOLY_LIGHT.id);
-
-    const iolFlashOfLights = flashOfLight.healingIolHits || 0;
-    const iolHolyLights = holyLight.healingIolHits || 0;
-
-    const flashOfLightHeals = flashOfLight.casts || 0;
-    const holyLightHeals = holyLight.casts || 0;
-    const fillerFlashOfLights = flashOfLightHeals - iolFlashOfLights;
-    const fillerHolyLights = holyLightHeals - iolHolyLights;
-    const totalFillers = fillerFlashOfLights + fillerHolyLights;
-
-    const items = [
-      {
-        color: '#ecd1b6',
-        label: 'Flash of Light',
-        spellId: SPELLS.FLASH_OF_LIGHT.id,
-        value: fillerFlashOfLights,
-      },
-      {
-        color: '#ff7d0a',
-        label: 'Holy Light',
-        spellId: SPELLS.HOLY_LIGHT.id,
-        value: fillerHolyLights,
-      },
-    ];
-
-    return (
-      <div className="flex">
-        <div className="flex-sub" style={{ paddingRight: 12 }}>
-          {this.chart(items)}
-        </div>
-        <div className="flex-main" style={{ fontSize: '80%', paddingTop: 3 }}>
-          {this.legend(items, totalFillers)}
-        </div>
-      </div>
-    );
-  }
-
   statistic() {
     return (
-      <React.Fragment>
-        <StatisticsListBox
-          title={<span><SpellLink id={SPELLS.INFUSION_OF_LIGHT.id}>Infusion of Light</SpellLink> usage</span>}
-          containerProps={{ className: 'col-xs-12' }}
-        >
-          {this.iolCastRatioChart()}
-        </StatisticsListBox>
-        <StatisticsListBox
-          title="Fillers"
-          containerProps={{ className: 'col-xs-12' }}
-        >
-          {this.fillerCastRatioChart()}
-        </StatisticsListBox>
-      </React.Fragment>
+      <StatisticsListBox
+        title={<React.Fragment><SpellLink id={SPELLS.INFUSION_OF_LIGHT.id}>Infusion of Light</SpellLink> usage</React.Fragment>}
+      >
+        {this.iolCastRatioChart()}
+      </StatisticsListBox>
     );
   }
-  statisticOrder = STATISTIC_ORDER.CORE(199);
+  statisticOrder = STATISTIC_ORDER.CORE(198);
 }
 
-export default CastBehavior;
+export default InfusionOfLightCastRatio;

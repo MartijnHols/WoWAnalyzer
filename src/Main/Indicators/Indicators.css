@@ -45,9 +45,9 @@
 
 /* Different indicator styles */
 .indicator.-horizontal {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
-  min-width: 20em;
+  width: 25em;
 }
 .indicator.-horizontal > div {
   flex: 1 1 auto;
@@ -63,6 +63,7 @@
 
 .indicator.-vertical {
   text-align: center;
+  min-width: 18em;
 }
 
 .indicator.-medium {

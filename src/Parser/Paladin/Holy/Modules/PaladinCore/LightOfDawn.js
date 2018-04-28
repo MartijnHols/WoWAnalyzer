@@ -35,12 +35,17 @@ class LightOfDawn extends Analyzer {
   statistic() {
     const totalCastsIncludingDp = this.casts + this.secondSunrise.procs;
     return (
-      <StatisticBox
-        icon={<SpellIcon id={SPELLS.LIGHT_OF_DAWN_CAST.id} />}
-        value={`${((this.heals / totalCastsIncludingDp) || 0).toFixed(2)} players`}
-        label="Average hits per cast"
-        tooltip="This considers Second Sunrise procs as additional casts so that the resulting number does not fluctuate based on your luck. You should consider the delay of Second Sunrise whenever you cast Light of Dawn and keep your aim on point."
-      />
+      <React.Fragment>
+        <div style={{ width: '100%', flex: '1 1 auto', margin: 0 }} />
+        <StatisticBox
+          icon={<SpellIcon id={SPELLS.LIGHT_OF_DAWN_CAST.id} />}
+          value={`${((this.heals / totalCastsIncludingDp) || 0).toFixed(2)} players`}
+          label="Average hits per cast"
+          tooltip="This considers Second Sunrise procs as additional casts so that the resulting number does not fluctuate based on your luck. You should consider the delay of Second Sunrise whenever you cast Light of Dawn and keep your aim on point."
+          medium
+          direction="vertical"
+        />
+      </React.Fragment>
     );
   }
   statisticOrder = STATISTIC_ORDER.CORE(31);

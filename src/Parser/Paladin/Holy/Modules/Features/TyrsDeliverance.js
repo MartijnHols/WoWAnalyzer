@@ -79,13 +79,16 @@ class TyrsDeliverance extends Analyzer {
     const tyrsDeliverancePercentage = tyrsDeliveranceHealHealingPercentage + tyrsDeliveranceBuffFoLHLHealingPercentage;
 
     return (
-      <StatisticBox
-        icon={<SpellIcon id={SPELLS.TYRS_DELIVERANCE_CAST.id} />}
-        value={`${formatPercentage(tyrsDeliverancePercentage)} %`}
-        label="Tyr's Deliverance healing"
-        tooltip={`The total actual effective healing contributed by Tyr's Deliverance. This includes the gains from the increase to healing by Flash of Light and Holy Light.<br /><br />The actual healing done by the effect was ${formatPercentage(tyrsDeliveranceHealHealingPercentage)}% of your healing done, and the healing contribution from the Flash of Light and Holy Light heal increase was ${formatPercentage(tyrsDeliveranceBuffFoLHLHealingPercentage)}% of your healing done.`}
-        small
-      />
+      <React.Fragment>
+        <div style={{ width: '100%', flex: '1 1 auto', margin: 0 }} />
+        <StatisticBox
+          icon={<SpellIcon id={SPELLS.TYRS_DELIVERANCE_CAST.id} />}
+          value={`${formatPercentage(tyrsDeliverancePercentage)} %`}
+          label="Tyr's Deliverance healing"
+          tooltip={`The total actual effective healing contributed by Tyr's Deliverance. This includes the gains from the increase to healing by Flash of Light and Holy Light.<br /><br />The actual healing done by the effect was ${formatPercentage(tyrsDeliveranceHealHealingPercentage)}% of your healing done, and the healing contribution from the Flash of Light and Holy Light heal increase was ${formatPercentage(tyrsDeliveranceBuffFoLHLHealingPercentage)}% of your healing done.`}
+          small
+        />
+      </React.Fragment>
     );
   }
   statisticOrder = STATISTIC_ORDER.UNIMPORTANT();

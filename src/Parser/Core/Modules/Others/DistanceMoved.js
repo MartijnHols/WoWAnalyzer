@@ -7,6 +7,7 @@ import { formatPercentage } from 'common/format';
 import Analyzer from 'Parser/Core/Analyzer';
 
 import { STATISTIC_ORDER } from 'Main/SmallStatisticBox';
+import StatisticBox from 'Main/StatisticBox';
 
 
 const debug = false;
@@ -81,42 +82,28 @@ class DistanceMoved extends Analyzer {
   }
 
   statistic() {
-    const dist_value = `≈${formatThousands(this.totalDistanceMoved)} yards`;
-    const dist_label = "Distance moved";
-    const dist_tooltip = `≈${formatThousands(this.totalDistanceMoved / (this.owner.fightDuration / 1000) * 60)} yards per minute. Consider this when analyzing the fight, as some fights require more movement than others. Unnecessary movement can result in a DPS/HPS loss.`;
-    const dist_icon = <Icon icon="spell_fire_burningspeed" />;
-
-    const timeMoving_value = `≈${formatPercentage(this.timeSpentMoving / (this.owner.fightDuration))}%`;
-    const timeMoving_label = "Time spent moving";
-    const timeMoving_tooltip = `In ≈${formatThousands(this.timeSpentMoving / 1000)} seconds of movement you moved ≈${formatThousands(this.totalDistanceMoved)} yards. This statistic is not entirely accurate and may be overstated for fights with lots of problems.`;
-    const timeMoving_icon = <Icon icon="inv_misc_pocketwatch_02" />;
-
     debug && console.log(`Time spent moving: ${this.timeSpentMoving / 1000} s, Total distance moved: ${this.totalDistanceMoved} yds`);
 
     return (
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <div className="panel statistic-box small">
-          <div className="panel-body flex wrapable">
-            <div className="flex-main">
-              {dist_icon} {dist_label}
-            </div>
-            <div className="flex-sub text-right">
-              {dist_tooltip ? <dfn data-tip={dist_tooltip}>{dist_value}</dfn> : dist_value}
-            </div>
-          </div>
-          <div className="panel-body flex wrapable">
-            <div className="flex-main">
-              {timeMoving_icon} {timeMoving_label}
-            </div>
-            <div className="flex-sub text-right">
-              {timeMoving_tooltip ? <dfn data-tip={timeMoving_tooltip}>{timeMoving_value}</dfn> : timeMoving_value}
-            </div>
-          </div>
-        </div>
-      </div>
+      <React.Fragment>
+        <StatisticBox
+          icon={<Icon icon="spell_fire_burningspeed" />}
+          label="Distance moved"
+          tooltip={`≈${formatThousands(this.totalDistanceMoved / (this.owner.fightDuration / 1000) * 60)} yards per minute. Consider this when analyzing the fight, as some fights require more movement than others. Unnecessary movement can result in a DPS/HPS loss.`}
+          value={`≈${formatThousands(this.totalDistanceMoved)} yards`}
+          small
+        />
+        <StatisticBox
+          icon={<Icon icon="inv_misc_pocketwatch_02" />}
+          label="Time spent moving"
+          tooltip={`In ≈${formatThousands(this.timeSpentMoving / 1000)} seconds of movement you moved ≈${formatThousands(this.totalDistanceMoved)} yards. This statistic is not entirely accurate and may be overstated for fights with lots of problems.`}
+          value={`≈${formatPercentage(this.timeSpentMoving / (this.owner.fightDuration))} %`}
+          small
+        />
+      </React.Fragment>
     );
   }
-  statisticOrder = STATISTIC_ORDER.UNIMPORTANT();
+  statisticOrder = STATISTIC_ORDER.UNIMPORTANT(1000);
 }
 
 export default DistanceMoved;

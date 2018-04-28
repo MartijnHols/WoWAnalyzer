@@ -39,14 +39,16 @@
   z-index: 1;
 }
 .statistics {
-  display: flex;
+  /*display: flex;*/
   flex-direction: row;
   flex-wrap: wrap;
+  text-align: center;
 }
 .statistics > div {
-  flex: 1 1 0;
-  width: auto;
   margin: 30px 15px;
+  text-align: left;
+  width: auto;
+  display: inline-block;
 }
 .results .navigation {
   border-bottom: 4px solid #d84141;

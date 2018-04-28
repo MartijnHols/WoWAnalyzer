@@ -15,7 +15,8 @@ import PaladinAbilityTracker from './Modules/PaladinCore/PaladinAbilityTracker';
 import BeaconHealOriginMatcher from './Modules/PaladinCore/BeaconHealOriginMatcher';
 import BeaconTargets from './Modules/PaladinCore/BeaconTargets';
 import BeaconHealing from './Modules/PaladinCore/BeaconHealing';
-import CastBehavior from './Modules/PaladinCore/CastBehavior';
+import InfusionOfLightCastRatio from './Modules/PaladinCore/InfusionOfLightCastRatio';
+import FillerCastRatio from './Modules/PaladinCore/FillerCastRatio';
 import Overhealing from './Modules/PaladinCore/Overhealing';
 import FillerLightOfTheMartyrs from './Modules/PaladinCore/FillerLightOfTheMartyrs';
 import FillerFlashOfLight from './Modules/PaladinCore/FillerFlashOfLight';
@@ -79,7 +80,8 @@ class CombatLogParser extends CoreCombatLogParser {
     beaconHealOriginMatcher: BeaconHealOriginMatcher,
     beaconTargets: BeaconTargets,
     beaconHealing: BeaconHealing,
-    castBehavior: CastBehavior,
+    infusionOfLightCastRatio: InfusionOfLightCastRatio,
+    fillerCastRatio: FillerCastRatio,
     overhealing: Overhealing,
     fillerLightOfTheMartyrs: FillerLightOfTheMartyrs,
     fillerFlashOfLight: FillerFlashOfLight,
