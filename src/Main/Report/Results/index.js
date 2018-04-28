@@ -102,23 +102,21 @@ class Results extends React.PureComponent {
 
   renderStatistics(statistics) {
     return (
-      <div className="break-out statistics-container">
-        <div className="container">
-          <div className="text-center">
-            <h1 style={{ textTransform: 'uppercase', fontSize: '4em' }}>Metrics</h1>
-          </div>
-
-          <div className="statistics">
-            {statistics
-              .filter(statistic => !!statistic) // filter optionals
-              .map((statistic, index) => statistic.statistic ? statistic : { statistic, order: index }) // normalize
-              .sort((a, b) => a.order - b.order)
-              .map((statistic, i) => React.cloneElement(statistic.statistic, {
-                key: `${statistic.order}-${i}`,
-              }))}
-          </div>
+      <React.Fragment>
+        <div className="text-center">
+          <h1 style={{ textTransform: 'uppercase', fontSize: '4em' }}>Metrics</h1>
         </div>
-      </div>
+
+        <div className="statistics">
+          {statistics
+            .filter(statistic => !!statistic) // filter optionals
+            .map((statistic, index) => statistic.statistic ? statistic : { statistic, order: index }) // normalize
+            .sort((a, b) => a.order - b.order)
+            .map((statistic, i) => React.cloneElement(statistic.statistic, {
+              key: `${statistic.order}-${i}`,
+            }))}
+        </div>
+      </React.Fragment>
     );
   }
 
