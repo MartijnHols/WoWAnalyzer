@@ -23,20 +23,23 @@ class RelicTraits extends Analyzer {
 
   statistic() {
     return (
-      <StatisticsListBox
-        title="Relic traits"
-        tooltip="This only calculates the value of the last point of each relic trait; for you with your gear and only during this fight. The value of an additional point would likely be slightly lower due to increased overhealing."
-      >
-        {this.shockTreatment.subStatistic()}
-        {this.deliverTheLight.subStatistic()}
-        {this.secondSunrise.subStatistic()}
-        {this.expelTheDarkness.subStatistic()}
-        {this.tyrsMunificence.subStatistic()}
-        {this.justiceThroughSacrifice.subStatistic()}
-      </StatisticsListBox>
+      <React.Fragment>
+        <div style={{ width: '100%', flex: '1 1 auto', margin: 0 }} />
+        <StatisticsListBox
+          title="Relic traits"
+          tooltip="This only calculates the value of the last point of each relic trait; for you with your gear and only during this fight. The value of an additional point would likely be slightly lower due to increased overhealing."
+        >
+          {this.shockTreatment.subStatistic()}
+          {this.deliverTheLight.subStatistic()}
+          {this.secondSunrise.subStatistic()}
+          {this.expelTheDarkness.subStatistic()}
+          {this.tyrsMunificence.subStatistic()}
+          {this.justiceThroughSacrifice.subStatistic()}
+        </StatisticsListBox>
+      </React.Fragment>
     );
   }
-  statisticOrder = STATISTIC_ORDER.OPTIONAL(1000);
+  statisticOrder = STATISTIC_ORDER.UNIMPORTANT(9998);
 }
 
 export default RelicTraits;

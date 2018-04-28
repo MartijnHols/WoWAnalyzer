@@ -54,37 +54,32 @@ class DivinePurpose extends Analyzer {
     const holyShockHeals = holyShockHeal.healingHits || 0;
 
     return (
-      <React.Fragment>
-        <StatisticBox
-          icon={<SpellIcon id={SPELLS.DIVINE_PURPOSE_TALENT_HOLY.id} />}
-          value={(
-            <span>
-              {this.holyShockProcs}{' '}
-              <SpellIcon
-                id={SPELLS.HOLY_SHOCK_CAST.id}
-                style={{
-                  height: '1.3em',
-                  marginTop: '-.1em',
-                }}
-              />
-              {' '}
-              {this.lightOfDawnProcs}{' '}
-              <SpellIcon
-                id={SPELLS.LIGHT_OF_DAWN_CAST.id}
-                style={{
-                  height: '1.3em',
-                  marginTop: '-.1em',
-                }}
-              />
-            </span>
-          )}
-          label="Divine Purpose procs"
-          tooltip={`Your Divine Purpose proc rate for Holy Shock was ${formatPercentage(this.holyShockProcs / (holyShockHeals - this.holyShockProcs))}%.<br />Your Divine Purpose proc rate for Light of Dawn was ${formatPercentage(this.lightOfDawnProcs / (lightOfDawnHeals - this.lightOfDawnProcs))}%`}
-          medium
-          direction="vertical"
-        />
-        <div style={{ width: '100%', flex: '1 1 auto', margin: 0 }} />
-      </React.Fragment>
+      <StatisticBox
+        icon={<SpellIcon id={SPELLS.DIVINE_PURPOSE_TALENT_HOLY.id} />}
+        value={(
+          <span>
+            {this.holyShockProcs}{' '}
+            <SpellIcon
+              id={SPELLS.HOLY_SHOCK_CAST.id}
+              style={{
+                height: '1.3em',
+                marginTop: '-.1em',
+              }}
+            />
+            {' '}
+            {this.lightOfDawnProcs}{' '}
+            <SpellIcon
+              id={SPELLS.LIGHT_OF_DAWN_CAST.id}
+              style={{
+                height: '1.3em',
+                marginTop: '-.1em',
+              }}
+            />
+          </span>
+        )}
+        label="Divine Purpose procs"
+        tooltip={`Your Divine Purpose proc rate for Holy Shock was ${formatPercentage(this.holyShockProcs / (holyShockHeals - this.holyShockProcs))}%.<br />Your Divine Purpose proc rate for Light of Dawn was ${formatPercentage(this.lightOfDawnProcs / (lightOfDawnHeals - this.lightOfDawnProcs))}%`}
+      />
     );
   }
   statisticOrder = STATISTIC_ORDER.CORE(75);

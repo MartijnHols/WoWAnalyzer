@@ -4,10 +4,8 @@ import { Doughnut as DoughnutChart } from 'react-chartjs-2';
 import SPELLS from 'common/SPELLS';
 import SpellLink from 'common/SpellLink';
 import { formatPercentage } from 'common/format';
-
 import Analyzer from 'Parser/Core/Analyzer';
-
-import StatisticsListBox, { STATISTIC_ORDER } from 'Main/StatisticsListBox';
+import PieChart, { STATISTIC_ORDER } from 'Main/Indicators/PieChart';
 
 import PaladinAbilityTracker from './PaladinAbilityTracker';
 
@@ -67,8 +65,8 @@ class FillerCastRatio extends Analyzer {
           datasets: [{
             data: items.map(item => item.value),
             backgroundColor: items.map(item => item.color),
-            borderColor: '#666',
-            borderWidth: 1.5,
+            borderColor: '#000',
+            borderWidth: 1,
           }],
           labels: items.map(item => item.label),
         }}
@@ -79,7 +77,7 @@ class FillerCastRatio extends Analyzer {
           tooltips: {
             bodyFontSize: 8,
           },
-          cutoutPercentage: 45,
+          cutoutPercentage: 25,
           animation: false,
           responsive: false,
         }}
@@ -89,7 +87,7 @@ class FillerCastRatio extends Analyzer {
     );
   }
 
-  fillerCastRatioChart() {
+  subStatistic() {
     const abilityTracker = this.abilityTracker;
     const getAbility = spellId => abilityTracker.getAbility(spellId);
 
@@ -107,7 +105,7 @@ class FillerCastRatio extends Analyzer {
 
     const items = [
       {
-        color: '#ecd1b6',
+        color: '#ebded1',
         label: 'Flash of Light',
         spellId: SPELLS.FLASH_OF_LIGHT.id,
         value: fillerFlashOfLights,
@@ -121,24 +119,12 @@ class FillerCastRatio extends Analyzer {
     ];
 
     return (
-      <div className="flex">
-        <div className="flex-sub" style={{ paddingRight: 12 }}>
-          {this.chart(items)}
-        </div>
-        <div className="flex-main" style={{ fontSize: '80%', paddingTop: 3 }}>
-          {this.legend(items, totalFillers)}
-        </div>
-      </div>
-    );
-  }
-
-  statistic() {
-    return (
-      <StatisticsListBox
+      <PieChart
         title="Fillers"
-      >
-        {this.fillerCastRatioChart()}
-      </StatisticsListBox>
+        legend={this.legend(items, totalFillers)}
+        chart={this.chart(items)}
+        direction="vertical"
+      />
     );
   }
   statisticOrder = STATISTIC_ORDER.CORE(199);

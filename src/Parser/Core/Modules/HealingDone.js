@@ -121,7 +121,6 @@ class HealingDone extends Analyzer {
             </div>
           </div>
         )}
-        footerStyle={{ overflow: 'hidden' }}
       />
     );
   }

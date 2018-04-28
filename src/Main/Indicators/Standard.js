@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import '../StatisticBox.css';
 import './Indicators.css';
+import './Horizontal.css';
+import './Vertical.css';
 
 export { default as STATISTIC_ORDER } from '../STATISTIC_ORDER';
 

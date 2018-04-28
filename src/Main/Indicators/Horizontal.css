@@ -1,0 +1,16 @@
+.indicator.-horizontal {
+  display: inline-flex;
+  flex-direction: row;
+  width: 25em;
+}
+.indicator.-horizontal > div {
+  flex: 1 1 auto;
+}
+.indicator.-horizontal > div:nth-child(1) { /* icon container */
+  width: 7.1em;
+  margin-right: 1.5em;
+  text-align: center;
+}
+.indicator.-horizontal > div:nth-child(2) {
+  width: 100%;
+}

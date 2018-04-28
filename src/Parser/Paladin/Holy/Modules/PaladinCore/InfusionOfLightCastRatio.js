@@ -8,7 +8,7 @@ import { formatPercentage } from 'common/format';
 import Analyzer from 'Parser/Core/Analyzer';
 import Combatants from 'Parser/Core/Modules/Combatants';
 
-import StatisticsListBox, { STATISTIC_ORDER } from 'Main/StatisticsListBox';
+import PieChart, { STATISTIC_ORDER } from 'Main/Indicators/PieChart';
 
 import PaladinAbilityTracker from './PaladinAbilityTracker';
 
@@ -73,8 +73,8 @@ class InfusionOfLightCastRatio extends Analyzer {
           datasets: [{
             data: items.map(item => item.value),
             backgroundColor: items.map(item => item.color),
-            borderColor: '#666',
-            borderWidth: 1.5,
+            borderColor: '#000',
+            borderWidth: 1,
           }],
           labels: items.map(item => item.label),
         }}
@@ -85,7 +85,7 @@ class InfusionOfLightCastRatio extends Analyzer {
           tooltips: {
             bodyFontSize: 8,
           },
-          cutoutPercentage: 45,
+          cutoutPercentage: 25,
           animation: false,
           responsive: false,
         }}
@@ -95,7 +95,7 @@ class InfusionOfLightCastRatio extends Analyzer {
     );
   }
 
-  iolCastRatioChart() {
+  subStatistic() {
     const abilityTracker = this.abilityTracker;
     const getAbility = spellId => abilityTracker.getAbility(spellId);
 
@@ -117,7 +117,7 @@ class InfusionOfLightCastRatio extends Analyzer {
 
     const items = [
       {
-        color: '#ecd1b6',
+        color: '#ebded1',
         label: 'Flash of Light',
         spellId: SPELLS.FLASH_OF_LIGHT.id,
         value: iolFlashOfLights,
@@ -137,24 +137,12 @@ class InfusionOfLightCastRatio extends Analyzer {
     ];
 
     return (
-      <div className="flex">
-        <div className="flex-sub" style={{ paddingRight: 12 }}>
-          {this.chart(items)}
-        </div>
-        <div className="flex-main" style={{ fontSize: '80%', paddingTop: 3 }}>
-          {this.legend(items, totalIolProcs)}
-        </div>
-      </div>
-    );
-  }
-
-  statistic() {
-    return (
-      <StatisticsListBox
+      <PieChart
         title={<React.Fragment><SpellLink id={SPELLS.INFUSION_OF_LIGHT.id}>Infusion of Light</SpellLink> usage</React.Fragment>}
-      >
-        {this.iolCastRatioChart()}
-      </StatisticsListBox>
+        legend={this.legend(items, totalIolProcs)}
+        chart={this.chart(items)}
+        direction="vertical"
+      />
     );
   }
   statisticOrder = STATISTIC_ORDER.CORE(198);

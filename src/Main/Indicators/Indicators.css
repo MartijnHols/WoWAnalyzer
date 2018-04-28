@@ -29,9 +29,9 @@
   content: '';
   position: absolute;
   top: -1em;
-  left: -1em;
-  right: -1em;
-  bottom: -1.4em;
+  left: -1.2em;
+  right: -1.2em;
+  bottom: -1.65em;
   background: url(/img/statistic-icon-border.png);
   background-size: contain;
   pointer-events: none;
@@ -43,29 +43,7 @@
   height: 6em;
 }
 
-/* Different indicator styles */
-.indicator.-horizontal {
-  display: inline-flex;
-  flex-direction: row;
-  width: 25em;
-}
-.indicator.-horizontal > div {
-  flex: 1 1 auto;
-}
-.indicator.-horizontal > div:nth-child(1) { /* icon container */
-  width: 7.1em;
-  margin-right: 1.5em;
-  text-align: center;
-}
-.indicator.-horizontal > div:nth-child(2) {
-  width: 100%;
-}
-
-.indicator.-vertical {
-  text-align: center;
-  min-width: 18em;
-}
-
+/* Different indicator sizes */
 .indicator.-medium {
   font-size: 0.8em;
 }

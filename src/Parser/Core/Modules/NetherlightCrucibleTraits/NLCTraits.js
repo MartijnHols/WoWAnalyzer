@@ -64,7 +64,7 @@ class NLCTraits extends Analyzer {
       </StatisticsListBox>
     );
   }
-  statisticOrder = STATISTIC_ORDER.OPTIONAL(2000);
+  statisticOrder = STATISTIC_ORDER.UNIMPORTANT(9999);
 }
 
 export default NLCTraits;

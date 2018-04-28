@@ -49,6 +49,7 @@
   text-align: left;
   width: auto;
   display: inline-block;
+  vertical-align: top;
 }
 .results .navigation {
   border-bottom: 4px solid #d84141;
