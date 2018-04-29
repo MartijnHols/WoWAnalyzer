@@ -1,0 +1,32 @@
+nav.results {
+  position: fixed;
+  left: 60px;
+  top: 48px;
+  bottom: 0;
+  background: #17191d;
+  overflow-y: auto;
+  width: 200px;
+}
+nav.results > ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+nav.results > ul > li a {
+  padding: 15px;
+  display: block;
+  font-weight: 400;
+  line-height: 1;
+}
+nav.results > ul > li a svg {
+  font-size: 2em;
+  margin-right: 0.6em;
+}
+nav.results > ul > li a:hover {
+  background: rgba(70, 70, 70, 0.3);
+  color: #fb3535;
+}
+nav.results > ul > li.selected a {
+  background: #373737;
+}

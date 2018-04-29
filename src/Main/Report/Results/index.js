@@ -32,6 +32,7 @@ import ResultsWarning from './ResultsWarning';
 import Header from './Header';
 import DetailsTab from './DetailsTab';
 import Odyn from './Images/odyn.jpg';
+import ResultsNavigation from './ResultsNavigation';
 
 const CURRENT_GAME_PATCH = '8.0.0';
 
@@ -368,8 +369,11 @@ class Results extends React.PureComponent {
     }
 
     return (
-      <div style={{ paddingLeft: 100, paddingRight: 100 }}>
-        <div className="results">
+      <div className="flex">
+        <div className="flex-sub">
+          <ResultsNavigation />
+        </div>
+        <div className="flex-main results" style={{ marginLeft: 200, paddingLeft: 100, paddingRight: 100, overflowY: 'auto' }}>
           <Header config={config} playerName={selectedCombatant.name} boss={parser.boss} fight={fight} />
 
           {!parser.finished ? this.renderLoading() : this.renderContent()}

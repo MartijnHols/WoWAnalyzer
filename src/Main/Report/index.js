@@ -25,7 +25,7 @@ import FightSelecter from './FightSelecter';
 import PlayerSelecter from './PlayerSelecter';
 import Results from './Results';
 import ActivityIndicator from '../ActivityIndicator';
-import FightNavigation from './FightNavigation';
+import FightNavigation from './FightNavigationBar';
 
 const timeAvailable = console.time && console.timeEnd;
 
