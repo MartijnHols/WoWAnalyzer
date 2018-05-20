@@ -12,6 +12,8 @@ import StatisticsIcon from 'Icons/Statistics';
 import ReadableList from 'common/ReadableList';
 import parseVersionString from 'common/parseVersionString';
 import Warning from 'common/Alert/Warning';
+import ItemLink from 'common/ItemLink';
+import ItemIcon from 'common/ItemIcon';
 import { getResultTab } from 'selectors/url/report';
 import DevelopmentTab from 'Main/DevelopmentTab';
 import EventsTab from 'Main/EventsTab';
@@ -22,8 +24,8 @@ import ActivityIndicator from 'Main/ActivityIndicator';
 import WarcraftLogsLogo from 'Main/Images/WarcraftLogs-logo.png';
 import WipefestLogo from 'Main/Images/Wipefest-logo.png';
 import Contributor from 'Main/Contributor';
+import ItemStatisticBox from 'Main/ItemStatisticBox';
 
-import ItemsPanel from './ItemsPanel';
 import ResultsWarning from './ResultsWarning';
 import Header from './Header';
 import DetailsTab from './DetailsTab';
@@ -100,7 +102,7 @@ class Results extends React.PureComponent {
     ReactTooltip.rebuild();
   }
 
-  renderStatistics(statistics) {
+  renderStatistics(statistics, items, selectedCombatant) {
     return (
       <React.Fragment>
         <div className="text-center">
@@ -115,6 +117,50 @@ class Results extends React.PureComponent {
             .map((statistic, i) => React.cloneElement(statistic.statistic, {
               key: `${statistic.order}-${i}`,
             }))}
+
+          {items
+            .sort((a, b) => {
+              // raw elements always rendered last
+              if (React.isValidElement(a)) {
+                return 1;
+              } else if (React.isValidElement(b)) {
+                return -1;
+              } else if (a.item && b.item) {
+                if (a.item.quality === b.item.quality) {
+                  // Qualities equal = show last added item at bottom
+                  return a.item.id - b.item.id;
+                }
+                // Show lowest quality item at bottom
+                return a.item.quality < b.item.quality;
+              } else if (a.item) {
+                return -1;
+              } else if (b.item) {
+                return 1;
+              }
+              // Neither is an actual item, sort by id so last added effect is shown at bottom
+              if (a.id < b.id) {
+                return -1;
+              } else if (a.id > b.id) {
+                return 1;
+              }
+              return 0;
+            })
+            .map(item => {
+              if (!item) {
+                return null;
+              } else if (React.isValidElement(item)) {
+                return item;
+              }
+
+              const id = item.id || item.item.id;
+              const itemDetails = id && selectedCombatant.getItem(id);
+              const icon = item.icon || <ItemIcon id={item.item.id} details={itemDetails} />;
+              const title = item.title || <ItemLink id={item.item.id} details={itemDetails} icon={false} />;
+
+              return (
+                <ItemStatisticBox key={id} icon={icon} value={item.result} label={title} />
+              );
+            })}
         </div>
       </React.Fragment>
     );
@@ -219,8 +265,6 @@ class Results extends React.PureComponent {
           <div className="col-md-4">
             {this.renderAbout()}
 
-            <ItemsPanel items={results.items} selectedCombatant={selectedCombatant} />
-
             <div>
               <a
                 href={`https://www.warcraftlogs.com/reports/${report.code}/#fight=${fight.id}&source=${parser.playerId}`}
@@ -287,7 +331,7 @@ class Results extends React.PureComponent {
 
         <div className="divider" />
 
-        {this.renderStatistics(results.statistics)}
+        {this.renderStatistics(results.statistics, results.items, selectedCombatant)}
 
         <div className="divider" />
 
